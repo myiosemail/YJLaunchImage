@@ -14,6 +14,8 @@
 @interface YJLaunchViewManager : UIView
 /** 广告模型*/
 @property (nonatomic , strong) YJAdModel  *adModel;
+/** 点击广告图回调*/
+@property (nonatomic , copy) void(^tapClick) ();
 /**
  创建一个对象
  */
