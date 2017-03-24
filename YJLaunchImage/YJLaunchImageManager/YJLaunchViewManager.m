@@ -10,7 +10,6 @@
 #import "YJLaunchView.h"
 #import "UIImageView+WebCache.h"
 #import "UIImage+YJLaunchImage.h"
-#import "YJAdViewController.h"
 #import "YJAdModel.h"
 @interface YJLaunchViewManager ()
 @property (nonatomic, weak) YJLaunchView *launchView;
@@ -125,10 +124,9 @@
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self removeFromSuperview];
-        YJAdViewController * adVc=[[YJAdViewController alloc]init];
-        adVc.adModel=self.adModel;
-        adVc.hidesBottomBarWhenPushed=YES;
-        [[UIApplication sharedApplication].keyWindow.rootViewController.childViewControllers[0] pushViewController:adVc animated:YES];
+      if (self.tapClick) {
+            self.tapClick();
+        }
     });
 }
 - (void)dealloc
